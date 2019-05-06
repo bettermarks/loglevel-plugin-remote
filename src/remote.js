@@ -51,6 +51,11 @@ function getConstructorName(obj) {
 }
 
 function interpolate(array) {
+  // if none of the items is a string return the array unmodified
+  return array.some(i => typeof i === 'string') ? interpolateString(array) : array;
+}
+
+function interpolateString(array) {
   let result = '';
   let index = 0;
 
